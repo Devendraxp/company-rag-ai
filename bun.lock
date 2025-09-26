@@ -6,7 +6,9 @@
       "dependencies": {
         "@langchain/community": "^0.3.55",
         "@langchain/core": "^0.3.75",
+        "@langchain/openai": "^0.6.13",
         "@langchain/textsplitters": "^0.1.0",
+        "@pinecone-database/pinecone": "^6.1.2",
         "pdf-parse": "^1.1.1",
       },
       "devDependencies": {
@@ -40,11 +42,13 @@
 
     "@langchain/core": ["@langchain/core@0.3.75", "", { "dependencies": { "@cfworker/json-schema": "^4.0.2", "ansi-styles": "^5.0.0", "camelcase": "6", "decamelize": "1.2.0", "js-tiktoken": "^1.0.12", "langsmith": "^0.3.67", "mustache": "^4.2.0", "p-queue": "^6.6.2", "p-retry": "4", "uuid": "^10.0.0", "zod": "^3.25.32", "zod-to-json-schema": "^3.22.3" } }, "sha512-kTyBS0DTeD0JYa9YH5lg6UdDbHmvplk3t9PCjP5jDQZCK5kPe2aDFToqdiCaLzZg8RzzM+clXLVyJtPTE8bZ2Q=="],
 
-    "@langchain/openai": ["@langchain/openai@0.6.11", "", { "dependencies": { "js-tiktoken": "^1.0.12", "openai": "5.12.2", "zod": "^3.25.32" }, "peerDependencies": { "@langchain/core": ">=0.3.68 <0.4.0" } }, "sha512-BkaudQTLsmdt9mF6tn6CrsK2TEFKk4EhAWYkouGTy/ljJIH/p2Nz9awIOGdrQiQt6AJ5mvKGupyVqy3W/jim2Q=="],
+    "@langchain/openai": ["@langchain/openai@0.6.13", "", { "dependencies": { "js-tiktoken": "^1.0.12", "openai": "5.12.2", "zod": "^3.25.32" }, "peerDependencies": { "@langchain/core": ">=0.3.68 <0.4.0" } }, "sha512-+QCVag3J2MeFxLMPjjYYpDCBKbmrK7D/xQGq+iWBGpNSg/08vnx7pEkkhiL2NTFIHiYu7w/7EG3UHQ8gOK/cag=="],
 
     "@langchain/textsplitters": ["@langchain/textsplitters@0.1.0", "", { "dependencies": { "js-tiktoken": "^1.0.12" }, "peerDependencies": { "@langchain/core": ">=0.2.21 <0.4.0" } }, "sha512-djI4uw9rlkAb5iMhtLED+xJebDdAG935AdP4eRTB02R7OB/act55Bj9wsskhZsvuyQRpO4O1wQOp85s6T6GWmw=="],
 
     "@langchain/weaviate": ["@langchain/weaviate@0.2.2", "", { "dependencies": { "uuid": "^10.0.0", "weaviate-client": "^3.5.2" }, "peerDependencies": { "@langchain/core": ">=0.2.21 <0.4.0" } }, "sha512-nMkK4ZwfKjQR98kzpL/PPdFixdmD/KX89lZ9R5rhEShv3nfVyfGW8bVMpmC91kqIWxsjeqaqUZ1ZAdzpZRnE/w=="],
+
+    "@pinecone-database/pinecone": ["@pinecone-database/pinecone@6.1.2", "", {}, "sha512-ydIlbtgIIHFgBL08sPzua5ckmOgtjgDz8xg21CnP1fqnnEgDmOlnfd10MRKU+fvFRhDlh4Md37SwZDr0d4cBqg=="],
 
     "@playwright/test": ["@playwright/test@1.55.0", "", { "dependencies": { "playwright": "1.55.0" }, "bin": { "playwright": "cli.js" } }, "sha512-04IXzPwHrW69XusN/SIdDdKZBzMfOT9UNT/YiJit/xpy2VuAoB8NHc8Aplb96zsWDddLnbkPL3TsmrS04ZU2xQ=="],
 
@@ -380,11 +384,15 @@
 
     "@ibm-cloud/watsonx-ai/@types/node": ["@types/node@18.19.124", "", { "dependencies": { "undici-types": "~5.26.4" } }, "sha512-hY4YWZFLs3ku6D2Gqo3RchTd9VRCcrjqp/I0mmohYeUVA5Y8eCXKJEasHxLAJVZRJuQogfd1GiJ9lgogBgKeuQ=="],
 
+    "@langchain/community/@langchain/openai": ["@langchain/openai@0.6.11", "", { "dependencies": { "js-tiktoken": "^1.0.12", "openai": "5.12.2", "zod": "^3.25.32" }, "peerDependencies": { "@langchain/core": ">=0.3.68 <0.4.0" } }, "sha512-BkaudQTLsmdt9mF6tn6CrsK2TEFKk4EhAWYkouGTy/ljJIH/p2Nz9awIOGdrQiQt6AJ5mvKGupyVqy3W/jim2Q=="],
+
     "chalk/ansi-styles": ["ansi-styles@4.3.0", "", { "dependencies": { "color-convert": "^2.0.1" } }, "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg=="],
 
     "ibm-cloud-sdk-core/@types/node": ["@types/node@18.19.124", "", { "dependencies": { "undici-types": "~5.26.4" } }, "sha512-hY4YWZFLs3ku6D2Gqo3RchTd9VRCcrjqp/I0mmohYeUVA5Y8eCXKJEasHxLAJVZRJuQogfd1GiJ9lgogBgKeuQ=="],
 
     "ibm-cloud-sdk-core/debug": ["debug@4.4.3", "", { "dependencies": { "ms": "^2.1.3" } }, "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="],
+
+    "langchain/@langchain/openai": ["@langchain/openai@0.6.11", "", { "dependencies": { "js-tiktoken": "^1.0.12", "openai": "5.12.2", "zod": "^3.25.32" }, "peerDependencies": { "@langchain/core": ">=0.3.68 <0.4.0" } }, "sha512-BkaudQTLsmdt9mF6tn6CrsK2TEFKk4EhAWYkouGTy/ljJIH/p2Nz9awIOGdrQiQt6AJ5mvKGupyVqy3W/jim2Q=="],
 
     "weaviate-client/uuid": ["uuid@9.0.1", "", { "bin": { "uuid": "dist/bin/uuid" } }, "sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA=="],
 
